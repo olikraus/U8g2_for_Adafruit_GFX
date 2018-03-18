@@ -64,4 +64,12 @@ void loop() {
 } 
 ```
 
-  
+# Reference
+
+ - `void begin(Adafruit_GFX &gfx)`: Connect to Adafruit GFX library
+ - `void setFont(const uint8_t *font)`: Assign u8g2 font, see  [here](https://github.com/olikraus/u8g2/wiki/fntlistall) for a list. 
+    Note: The list from the u8g2 project might be a little  bit newer. 
+    See also: [https://github.com/olikraus/u8g2/wiki/u8g2reference#setfont](https://github.com/olikraus/u8g2/wiki/u8g2reference#setfont)
+ 
+ 
+ 
