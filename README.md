@@ -65,11 +65,16 @@ void loop() {
 ```
 
 # Reference
-
- - `void begin(Adafruit_GFX &gfx)`: Connect to Adafruit GFX library
- - `void setFont(const uint8_t *font)`: Assign u8g2 font, see  [here](https://github.com/olikraus/u8g2/wiki/fntlistall) for a list. 
+ - `U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx`: Constructor call. This must be
+   the first command. No paramenters are required.
+ - `void u8g2_for_adafruit_gfx.begin(Adafruit_GFX &gfx)`: Connect to Adafruit GFX library
+ - `void u8g2_for_adafruit_gfx.setFont(const uint8_t *font)`: Assign u8g2 font, see  [here](https://github.com/olikraus/u8g2/wiki/fntlistall) for a list. 
     Note: The list from the u8g2 project might be a little  bit newer. 
     See also: [https://github.com/olikraus/u8g2/wiki/u8g2reference#setfont](https://github.com/olikraus/u8g2/wiki/u8g2reference#setfont)
+ - `void u8g2_for_adafruit_gfx.setFontMode(uint8_t is_transparent)`: Define, whether the background color should be drawn or not. 
+    See also: [https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontmode](https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontmode)
+ - `void u8g2_for_adafruit_gfx.setFontDirection(uint8_t dir)`: Identical to the u8g2 command:  
+     [https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontdirection](https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontdirection)
  
  
  
