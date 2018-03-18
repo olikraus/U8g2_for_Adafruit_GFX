@@ -30,8 +30,6 @@ list of such libraries. Probably many more are supported:
  - [https://github.com/adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library](https://github.com/adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library) (not tested)
  
  
-
-
 ## How to use U8g2_for_Adafruit_GFX?
 
 This is a complete example for `U8g2_for_Adafruit_GFX` connected to Adafruit SSD1306 
@@ -65,16 +63,32 @@ void loop() {
 ```
 
 # Reference
+
+## Command Reference
+
  - `U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx`: Constructor call. This must be
    the first command. No paramenters are required.
  - `void u8g2_for_adafruit_gfx.begin(Adafruit_GFX &gfx)`: Connect to Adafruit GFX library
  - `void u8g2_for_adafruit_gfx.setFont(const uint8_t *font)`: Assign u8g2 font, see  [here](https://github.com/olikraus/u8g2/wiki/fntlistall) for a list. 
-    Note: The list from the u8g2 project might be a little  bit newer. 
+    Note: The list from the u8g2 project might be a little bit newer, so maybe not allways all fonts are available for this project. 
     See also: [https://github.com/olikraus/u8g2/wiki/u8g2reference#setfont](https://github.com/olikraus/u8g2/wiki/u8g2reference#setfont)
  - `void u8g2_for_adafruit_gfx.setFontMode(uint8_t is_transparent)`: Define, whether the background color should be drawn or not. 
     See also: [https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontmode](https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontmode)
- - `void u8g2_for_adafruit_gfx.setFontDirection(uint8_t dir)`: Identical to the u8g2 command:  
+ - `void u8g2_for_adafruit_gfx.setFontDirection(uint8_t dir)`: Identical to the u8g2 command 
      [https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontdirection](https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontdirection)
+ - `void u8g2_for_adafruit_gfx.setForegroundColor(uint8_t dir)`: Set the foreground color for the text.
+ - `void u8g2_for_adafruit_gfx.setBackgroundColor(uint8_t dir)`: Set the background color for the text. This is only required if the font mode is not set to transparent.
+ - `void u8g2_for_adafruit_gfx.setCursor(int16_t x, int16_t y)`: Specify the x/y position for the next print() command. This x/y position is the lower left baseline of a character.
+   For "Arduino" this will be the lower left corner of the A character.
+ - `void u8g2_for_adafruit_gfx.print(...)`: This is the standard Arduino print function. Any text given here will be output on the display via Adafruit GFX library. 
+    See [here](https://www.arduino.cc/en/Serial/Print) for further description. Note: This function supports UTF-8.
+ 
+ ## Differences to U8g2
+  There are some minor differences to the U8g2 library:
+  - For U8g2 the color is specified with the `setDrawColor()` function. 
+  - The `print()` command supports UTF-8 by default. It also can not be disabled. For U8g2 the UTF-8 support must be enabled first.
+  - This library does not support the change of the reference position. The reference position is the lower left baseline of a character.
+ 
  
  
  
