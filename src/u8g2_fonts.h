@@ -40,6 +40,7 @@
 #ifndef _u8g2_fonts_h
 #define _u8g2_fonts_h
 
+#include <stdint.h>
 
 #ifdef __GNUC__
 #  define U8X8_NOINLINE __attribute__((noinline))

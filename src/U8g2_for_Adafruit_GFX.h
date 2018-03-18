@@ -140,8 +140,13 @@ class U8G2_FOR_ADAFRUIT_GFX : public Print {
     int16_t tx, ty;       // current position for the print command
     uint16_t encoding;    // the unicode, detected by the utf-8 decoder
     uint8_t utf8_state;   // current state of the utf-8 decoder, contains the remaining bytes for a detected unicode glyph 
-    
-    U8G2_FOR_ADAFRUIT_GFX(void) {u8g2.font = NULL; u8g2.font_decode.fg_color = 1; u8g2.font_decode.is_transparent = 1; u8g2.font_decode.dir = 0; utf8_state = 0; }    
+
+    void home(void) 
+      { tx = 0; ty = 0;  utf8_state = 0; }
+    void setCursor(int16_t x, int16_t y) 
+      { tx = x; ty = y; utf8_state = 0;  }
+  
+    U8G2_FOR_ADAFRUIT_GFX(void) {u8g2.font = NULL; u8g2.font_decode.fg_color = 1; u8g2.font_decode.is_transparent = 1; u8g2.font_decode.dir = 0; home(); } 
     void begin(Adafruit_GFX &gfx) { u8g2.gfx = &gfx; }
     void setFont(const uint8_t *font)             // set u8g2 font
       { u8g2_SetFont(&u8g2, font); }
@@ -161,10 +166,6 @@ class U8G2_FOR_ADAFRUIT_GFX : public Print {
 
     int16_t drawUTF8(int16_t x, int16_t y, const char *str);
     
-    void home(void) 
-      { tx = 0; ty = 0;  utf8_state = 0; }
-    void setCursor(int16_t x, int16_t y) 
-      { tx = x; ty = y; utf8_state = 0;  }
 
     uint16_t utf8_next(uint8_t b);
 
