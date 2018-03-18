@@ -37,8 +37,8 @@
 
 */
 
-#ifndef _u8g2_h
-#define _u8g2_h 
+#ifndef _u8g2_fonts_h
+#define _u8g2_fonts_h
 
 
 #ifdef __GNUC__
@@ -71,4 +71,5 @@
 
 #define U8G2_FONT_SECTION(name) U8X8_FONT_SECTION(name) 
 
-#endif /* _u8g2_h */
+#endif /* _u8g2_fonts_h */
+
