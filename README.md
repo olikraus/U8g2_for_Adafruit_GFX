@@ -1,3 +1,16 @@
+
+[tocstart]: # (toc start)
+
+  * [U8g2_for_Adafruit_GFX](#u8g2_for_adafruit_gfx)
+    * [What is U8g2_for_Adafruit_GFX?](#what-is-u8g2_for_adafruit_gfx)
+    * [Which Adafruit GFX Libraries are Supported?](#which-adafruit-gfx-libraries-are-supported)
+    * [How to use U8g2_for_Adafruit_GFX?](#how-to-use-u8g2_for_adafruit_gfx)
+  * [Reference](#reference)
+    * [Command Reference](#command-reference)
+    * [Differences to U8g2](#differences-to-u8g2)
+
+[tocend]: # (toc end)
+
 # U8g2_for_Adafruit_GFX
 
 Download: [https://github.com/olikraus/U8g2_for_Adafruit_GFX/archive/master.zip](https://github.com/olikraus/U8g2_for_Adafruit_GFX/archive/master.zip)
@@ -83,7 +96,7 @@ void loop() {
  - `void u8g2_for_adafruit_gfx.print(...)`: This is the standard Arduino print function. Any text given here will be output on the display via Adafruit GFX library. 
     See [here](https://www.arduino.cc/en/Serial/Print) for further description. Note: This function supports UTF-8.
  
- ## Differences to U8g2
+## Differences to U8g2
   There are some minor differences to the U8g2 library:
   - For U8g2 the color is specified with the `setDrawColor()` function. 
   - The `print()` command supports UTF-8 by default. It also can not be disabled. For U8g2 the UTF-8 support must be enabled first.
