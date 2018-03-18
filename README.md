@@ -15,6 +15,23 @@ Others are supported by Adafruit GFX libraries, but are not supported by U8g2.
 `U8g2_for_Adafruit_GFX` connects to an existing Adafruit Library and addes support for
 U8g2 fonts to all Adafruit GFX based libraries.
 
+## Which Adafruit GFX Libraries are Supported?
+
+All libraries based on the Adafruit GFX engine are supported. This is a incomplete
+list of such libraries. Probably many more are supported:
+
+ - [https://github.com/adafruit/Adafruit_SSD1306](https://github.com/adafruit/Adafruit_SSD1306) (tested) 
+ - [https://github.com/adafruit/Adafruit-ST7735-Library](https://github.com/adafruit/Adafruit-ST7735-Library) (not tested)
+ - [https://github.com/adafruit/Adafruit-Graphic-VFD-Display-Library](https://github.com/adafruit/Adafruit-Graphic-VFD-Display-Library) (not tested)
+ - [https://github.com/adafruit/Adafruit-HX8340B](https://github.com/adafruit/Adafruit-HX8340B) (not tested)
+ - [https://github.com/adafruit/Adafruit_HX8357_Library](https://github.com/adafruit/Adafruit_HX8357_Library) (not tested)
+ - [https://github.com/adafruit/Adafruit_ILI9340](https://github.com/adafruit/Adafruit_ILI9340) (not tested)
+ - [https://github.com/adafruit/Adafruit_ILI9341](https://github.com/adafruit/Adafruit_ILI9341)  (not tested)
+ - [https://github.com/adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library](https://github.com/adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library) (not tested)
+ 
+ 
+
+
 ## How to use U8g2_for_Adafruit_GFX?
 
 This is a complete example for `U8g2_for_Adafruit_GFX` connected to Adafruit SSD1306 
