@@ -5,6 +5,7 @@
  - Adds a the [U8g2](https://github.com/olikraus/u8g2) text drawing engine to all Adafruit GFX based Arduino librarys.
  - All [U8g2 fonts](https://github.com/olikraus/u8g2/wiki/fntlistall) can be used 
  - Support for UTF-8 and Unicode
+ - Support for Arduino print() command and F() Macro
 
 U8g2 is a graphics library for monochrome displays. U8g2 supports many
 displays, some of them are also supported by Adafruit GFX based libraries.
@@ -36,9 +37,9 @@ void loop() {
   u8g2_for_adafruit_gfx.setForegroundColor(WHITE);      // apply Adafruit GFX color
   u8g2_for_adafruit_gfx.setFont(u8g2_font_helvR14_tf);  // select u8g2 font from here: https://github.com/olikraus/u8g2/wiki/fntlistall
   u8g2_for_adafruit_gfx.setCursor(0,20);                // start writing at this position
-  u8g2_for_adafruit_gfx.print("Hello World");
+  u8g2_for_adafruit_gfx.print(F("Hello World"));
   u8g2_for_adafruit_gfx.setCursor(0,40);                // start writing at this position
-  u8g2_for_adafruit_gfx.print("Umlaut ÄÖÜ");            // UTF-8 string with german umlaut chars
+  u8g2_for_adafruit_gfx.print(F("Umlaut ÄÖÜ"));            // UTF-8 string with german umlaut chars
   display.display();                                    // make everything visible
   delay(2000);
 } 
