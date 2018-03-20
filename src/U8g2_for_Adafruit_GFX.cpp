@@ -574,12 +574,12 @@ void u8g2_SetFont(u8g2_font_t *u8g2, const uint8_t  *font)
   }
 }
 
-void u8g2_SetForegroundColor(u8g2_font_t *u8g2, uint8_t fg)
+void u8g2_SetForegroundColor(u8g2_font_t *u8g2, uint16_t fg)
 {
   u8g2->font_decode.fg_color = fg;
 }
 
-void u8g2_SetBackgroundColor(u8g2_font_t *u8g2, uint8_t bg)
+void u8g2_SetBackgroundColor(u8g2_font_t *u8g2, uint16_t bg)
 {
   u8g2->font_decode.bg_color = bg;
 }

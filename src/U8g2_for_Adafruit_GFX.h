@@ -88,6 +88,8 @@ struct _u8g2_font_decode_t
   
   int16_t target_x;
   int16_t target_y;
+  uint16_t fg_color;
+  uint16_t bg_color;
   
   int8_t x;           /* local coordinates, (0,0) is upper left */
   int8_t y;
@@ -96,8 +98,6 @@ struct _u8g2_font_decode_t
 
   uint8_t decode_bit_pos;     /* bitpos inside a byte of the compressed data */
   uint8_t is_transparent;
-  uint8_t fg_color;
-  uint8_t bg_color;
   uint8_t dir;        /* direction */
 };
 typedef struct _u8g2_font_decode_t u8g2_font_decode_t;
@@ -114,9 +114,9 @@ struct _u8g2_font_t
   u8g2_font_decode_t font_decode;   /* new font decode structure */
   u8g2_font_info_t font_info;     /* new font info structure */
 
-  uint8_t font_height_mode;
-  int8_t font_ref_ascent;
-  int8_t font_ref_descent;
+  //uint8_t font_height_mode;
+  //int8_t font_ref_ascent;
+  //int8_t font_ref_descent;
 
   int8_t glyph_x_offset;    /* set by u8g2_GetGlyphWidth as a side effect */
 };
@@ -130,8 +130,8 @@ void u8g2_SetFontDirection(u8g2_font_t *u8g2, uint8_t dir);
 int16_t u8g2_DrawGlyph(u8g2_font_t *u8g2, int16_t x, int16_t y, uint16_t encoding);
 int16_t u8g2_DrawStr(u8g2_font_t *u8g2, int16_t x, int16_t y, const char *s);
 void u8g2_SetFont(u8g2_font_t *u8g2, const uint8_t  *font);
-void u8g2_SetForegroundColor(u8g2_font_t *u8g2, uint8_t fg);
-void u8g2_SetBackgroundColor(u8g2_font_t *u8g2, uint8_t bg);
+void u8g2_SetForegroundColor(u8g2_font_t *u8g2, uint16_t fg);
+void u8g2_SetBackgroundColor(u8g2_font_t *u8g2, uint16_t bg);
 
 
 class U8G2_FOR_ADAFRUIT_GFX : public Print {
@@ -154,11 +154,14 @@ class U8G2_FOR_ADAFRUIT_GFX : public Print {
       { u8g2_SetFontMode(&u8g2, is_transparent); }
     void setFontDirection(uint8_t d)              // 0; 0 degree, 1: 90 degree, 2: 180 degree, 3: 270 degree
       { u8g2_SetFontDirection(&u8g2, d); }
-    void setForegroundColor(uint8_t fg)           // Use this color to draw the text
+    void setForegroundColor(uint16_t fg)           // Use this color to draw the text
       { u8g2_SetForegroundColor(&u8g2, fg); }
-    void setBackgroundColor(uint8_t bg)           // only used for setFontMode(0)
+    void setBackgroundColor(uint16_t bg)           // only used for setFontMode(0)
       { u8g2_SetBackgroundColor(&u8g2, bg); }
-      
+    int8_t getFontAscent(void)
+      { return u8g2.font_info.ascent_A; }
+    int8_t getFontDescent(void)
+      { return u8g2.font_info.descent_g; }
     int16_t drawGlyph(int16_t x, int16_t y, uint16_t e)
       { return u8g2_DrawGlyph(&u8g2, x, y, e); }           // draw a signle char (e == Unicode)
     int16_t drawStr(int16_t x, int16_t y, const char *s)
