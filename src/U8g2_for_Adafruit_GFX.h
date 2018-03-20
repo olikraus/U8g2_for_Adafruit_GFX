@@ -168,6 +168,7 @@ class U8G2_FOR_ADAFRUIT_GFX : public Print {
       { return u8g2_DrawStr(&u8g2, x, y, s); } 
 
     int16_t drawUTF8(int16_t x, int16_t y, const char *str);
+    int16_t getUTF8Width(const char *str);
     
 
     uint16_t utf8_next(uint8_t b);

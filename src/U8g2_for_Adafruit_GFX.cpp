@@ -500,6 +500,7 @@ uint8_t u8g2_IsGlyph(u8g2_font_t *u8g2, uint16_t requested_encoding)
 }
 
 /* side effect: updates u8g2->font_decode and u8g2->glyph_x_offset */
+/* actually u8g2_GetGlyphWidth returns the glyph delta x and glyph width itself is set as side effect */
 int8_t u8g2_GetGlyphWidth(u8g2_font_t *u8g2, uint16_t requested_encoding)
 {
   const uint8_t *glyph_data = u8g2_font_get_glyph_data(u8g2, requested_encoding);
@@ -683,5 +684,38 @@ int16_t U8G2_FOR_ADAFRUIT_GFX::drawUTF8(int16_t x, int16_t y, const char *str)
     }
   }
   return sum;
+}
+
+int16_t U8G2_FOR_ADAFRUIT_GFX::getUTF8Width(const char *str)
+{
+  uint16_t e;
+  int16_t dx, w;
+  
+  u8g2.font_decode.glyph_width = 0;
+  utf8_state = 0;
+  w = 0;
+  dx = 0;
+  for(;;)
+  {
+    e = utf8_next((uint8_t)*str);
+    if ( e == 0x0ffff )
+      break;
+    str++;
+    if ( e != 0x0fffe )
+    {
+      dx = u8g2_GetGlyphWidth(&u8g2, e);
+      w += dx;
+    }
+  }
+  /* adjust the last glyph, check for issue #16: do not adjust if width is 0 */
+  if ( u8g2.font_decode.glyph_width != 0 )
+  {
+    w -= dx;
+    w += u8g2.font_decode.glyph_width;  /* the real pixel width of the glyph, sideeffect of GetGlyphWidth */
+    /* issue #46: we have to add the x offset also */
+    w += u8g2.glyph_x_offset;	/* this value is set as a side effect of u8g2_GetGlyphWidth() */
+  }
+  
+  return w;
 }
 
