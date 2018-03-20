@@ -25,7 +25,7 @@ Download: [https://github.com/olikraus/U8g2_for_Adafruit_GFX/archive/master.zip]
 U8g2 is a graphics library for monochrome displays. U8g2 supports many
 displays, some of them are also supported by Adafruit GFX based libraries.
 Others are supported by Adafruit GFX libraries, but are not supported by U8g2.
-`U8g2_for_Adafruit_GFX` connects to an existing Adafruit Library and addes support for
+`U8g2_for_Adafruit_GFX` connects to an existing Adafruit Library and adds support for
 U8g2 fonts to all Adafruit GFX based libraries.
 
 ## Which Adafruit GFX Libraries are Supported?

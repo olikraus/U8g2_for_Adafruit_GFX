@@ -312,13 +312,16 @@ static void u8g2_font_decode_len(u8g2_font_t *u8g2, uint8_t len, uint8_t is_fore
     y = u8g2_add_vector_y(y, lx, ly, decode->dir);
     
     /* draw foreground and background (if required) */
-    if ( is_foreground )
+    if ( current > 0 )		/* avoid drawing zero length lines, issue #4 */
     {
-      u8g2_draw_hv_line(u8g2, x, y, current, decode->dir, decode->fg_color);
-    }
-    else if ( decode->is_transparent == 0 )    
-    {
-      u8g2_draw_hv_line(u8g2, x, y, current, decode->dir, decode->bg_color);
+      if ( is_foreground )
+      {
+	u8g2_draw_hv_line(u8g2, x, y, current, decode->dir, decode->fg_color);
+      }
+      else if ( decode->is_transparent == 0 )    
+      {
+	u8g2_draw_hv_line(u8g2, x, y, current, decode->dir, decode->bg_color);
+      }
     }
     
     /* check, whether the end of the run length code has been reached */
