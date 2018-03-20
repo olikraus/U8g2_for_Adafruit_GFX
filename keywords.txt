@@ -23,9 +23,7 @@ U8G2_FOR_ADAFRUIT_GFX	KEYWORD1
 
 begin	KEYWORD2
 drawGlyph	KEYWORD2
-drawStr	KEYWORD2
 drawUTF8	KEYWORD2
-getStrWidth	KEYWORD2
 getUTF8Width	KEYWORD2
 home	KEYWORD2
 setCursor	KEYWORD2
@@ -35,7 +33,8 @@ setFontDirection	KEYWORD2
 setFontMode	KEYWORD2
 setBackgroundColor	KEYWORD2
 setForegroundColor	KEYWORD2
-
+getFontAscent	KEYWORD2
+getFontDescent	KEYWORD2
 
 
 #######################################

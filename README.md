@@ -95,6 +95,10 @@ void loop() {
    For "Arduino" this will be the lower left corner of the A character.
  - `void u8g2_for_adafruit_gfx.print(...)`: This is the standard Arduino print function. Any text given here will be output on the display via Adafruit GFX library. 
     See [here](https://www.arduino.cc/en/Serial/Print) for further description. Note: This function supports UTF-8.
+ - `int8_t u8g2_for_adafruit_gfx.getFontAscent(void)`: The height of the character 'A' in the current font.
+ - `int8_t u8g2_for_adafruit_gfx.getFontDescent(void)`: The extend of 'g' below baseline. This value usually is negative.
+ - `int16_t u8g2_for_adafruit_gfx.getUTF8Width(const char *str)`: Return the width of the provided string.
+    
  
 ## Differences to U8g2
   There are some minor differences to the U8g2 library:
