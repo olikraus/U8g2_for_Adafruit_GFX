@@ -145,6 +145,8 @@ class U8G2_FOR_ADAFRUIT_GFX : public Print {
       { tx = 0; ty = 0;  utf8_state = 0; }
     void setCursor(int16_t x, int16_t y) 
       { tx = x; ty = y; utf8_state = 0;  }
+    int16_t getCursorX(void) { return tx; }
+    int16_t getCursorY(void) { return ty; }
   
     U8G2_FOR_ADAFRUIT_GFX(void) {u8g2.font = NULL; u8g2.font_decode.fg_color = 1; u8g2.font_decode.is_transparent = 1; u8g2.font_decode.dir = 0; home(); } 
     void begin(Adafruit_GFX &gfx) { u8g2.gfx = &gfx; }
