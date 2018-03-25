@@ -179,7 +179,16 @@ class U8G2_FOR_ADAFRUIT_GFX : public Print {
       uint16_t e = utf8_next(v);
       int16_t delta;
       
-      if ( e < 0x0fffe )
+      if ( e == '\n' )
+      {
+	tx = 0;
+	ty += font_info.ascent_para - font_info.descent_para;
+      }
+      else if ( e == '\r' )
+      {
+	tx = 0;
+      }
+      else if ( e < 0x0fffe )
       {
         delta = drawGlyph(tx, ty, e);
         switch(u8g2.font_decode.dir)
