@@ -182,7 +182,7 @@ class U8G2_FOR_ADAFRUIT_GFX : public Print {
       if ( e == '\n' )
       {
 	tx = 0;
-	ty += font_info.ascent_para - font_info.descent_para;
+	ty += u8g2.font_info.ascent_para - u8g2.font_info.descent_para;
       }
       else if ( e == '\r' )
       {
