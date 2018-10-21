@@ -27,10 +27,10 @@ void loop() {
   int16_t x = 4;
   int16_t y = 25;
   display.clearDisplay();                               // clear the graphcis buffer  
+  u8g2_for_adafruit_gfx.setFont(u8g2_font_helvB14_tf);  // select u8g2 font from here: https://github.com/olikraus/u8g2/wiki/fntlistall
   u8g2_for_adafruit_gfx.setFontMode(1);                 // use u8g2 transparent mode (this is default)
   u8g2_for_adafruit_gfx.setFontDirection(0);            // left to right (this is default)
   u8g2_for_adafruit_gfx.setForegroundColor(WHITE);      // apply Adafruit GFX color
-  u8g2_for_adafruit_gfx.setFont(u8g2_font_helvB14_tf);  // select u8g2 font from here: https://github.com/olikraus/u8g2/wiki/fntlistall
   u8g2_for_adafruit_gfx.setCursor(x, y);                // start writing at this position
   u8g2_for_adafruit_gfx.print(s);
   /* calculate the size of the box into which the text will fit */

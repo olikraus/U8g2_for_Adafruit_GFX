@@ -25,10 +25,10 @@ void setup() {
 
 void loop() {  
   display.clearDisplay();                               // clear the graphcis buffer  
+  u8g2_for_adafruit_gfx.setFont(u8g2_font_helvR14_tf);  // select u8g2 font from here: https://github.com/olikraus/u8g2/wiki/fntlistall
   u8g2_for_adafruit_gfx.setFontMode(1);                 // use u8g2 transparent mode (this is default)
   u8g2_for_adafruit_gfx.setFontDirection(0);            // left to right (this is default)
   u8g2_for_adafruit_gfx.setForegroundColor(WHITE);      // apply Adafruit GFX color
-  u8g2_for_adafruit_gfx.setFont(u8g2_font_helvR14_tf);  // select u8g2 font from here: https://github.com/olikraus/u8g2/wiki/fntlistall
   u8g2_for_adafruit_gfx.setCursor(0,20);                // start writing at this position
   u8g2_for_adafruit_gfx.print("Hello World");
   u8g2_for_adafruit_gfx.setCursor(0,40);                // start writing at this position
