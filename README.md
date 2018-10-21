@@ -107,6 +107,9 @@ void loop() {
   - The `print()` command supports UTF-8 by default. It also can not be disabled. For U8g2 the UTF-8 support must be enabled first.
   - This library does not support the change of the reference position. The reference position is the lower left baseline of a character.
  
+## Release Procedure
+  - Ensure, that `u8g2_fonts.h` is included in `u8g2_fonts.c` (especially if the file is copied from u8g2).
+  - Update version in `library.properties`
  
  
  
