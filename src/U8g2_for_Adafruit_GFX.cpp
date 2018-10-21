@@ -455,7 +455,22 @@ const uint8_t *u8g2_font_get_glyph_data(u8g2_font_t *u8g2, uint16_t encoding)
   else
   {
     uint16_t e;
-    font += u8g2->font_info.start_pos_unicode; 
+    const uint8_t *unicode_lookup_table;
+    /* support for the new unicode lookup table */
+    
+    font += u8g2->font_info.start_pos_unicode;
+    unicode_lookup_table = font; 
+  
+    /* u8g2 issue 596: search for the glyph start in the unicode lookup table */
+    do
+    {
+      font += u8g2_font_get_word(unicode_lookup_table, 0);
+      e = u8g2_font_get_word(unicode_lookup_table, 2);
+      unicode_lookup_table+=4;
+    } while( e < encoding );
+    
+    /* variable "font" is now updated according to the lookup table */
+    
     for(;;)
     {
       e = u8x8_pgm_read( font );
