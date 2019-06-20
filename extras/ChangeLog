@@ -10,3 +10,13 @@ https://github.com/olikraus/U8g2_for_Adafruit_GFX ChangeLog
   * Added Newline handling
   * Fixed another color datatype bug
   * Fixed write function
+2018-10-21	v1.3.1	olikraus@gmail.com
+  * Support for new font format (unicode lookup table)
+  * Takeover u8g2 fonts
+2018-11-1	v1.5.2	olikraus@gmail.com
+  * Large font support
+2019-6.21	v1.6.0	olikraus@gmail.com
+  * Bugfix for u8g2_DrawStr (issue 16)
+  * Takeover u8g2 fonts (issue 17)
+  
+  
