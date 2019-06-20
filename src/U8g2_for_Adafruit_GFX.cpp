@@ -552,6 +552,7 @@ int16_t u8g2_DrawGlyph(u8g2_font_t *u8g2, int16_t x, int16_t y, uint16_t encodin
 int16_t u8g2_DrawStr(u8g2_font_t *u8g2, int16_t x, int16_t y, const char *s)
 {
   int16_t sum, delta;
+  sum = 0;
     
   while( *s != '\0' )
   {
