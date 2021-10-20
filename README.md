@@ -89,8 +89,8 @@ void loop() {
     See also: [https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontmode](https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontmode)
  - `void u8g2_for_adafruit_gfx.setFontDirection(uint8_t dir)`: Identical to the u8g2 command 
      [https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontdirection](https://github.com/olikraus/u8g2/wiki/u8g2reference#setfontdirection)
- - `void u8g2_for_adafruit_gfx.setForegroundColor(uint8_t dir)`: Set the foreground color for the text.
- - `void u8g2_for_adafruit_gfx.setBackgroundColor(uint8_t dir)`: Set the background color for the text. This is only required if the font mode is not set to transparent.
+ - `void u8g2_for_adafruit_gfx.setForegroundColor(uint16_t color)`: Set the foreground color for the text.
+ - `void u8g2_for_adafruit_gfx.setBackgroundColor(uint16_t color)`: Set the background color for the text. This is only required if the font mode is not set to transparent.
  - `void u8g2_for_adafruit_gfx.setCursor(int16_t x, int16_t y)`: Specify the x/y position for the next print() command. This x/y position is the lower left baseline of a character.
    For "Arduino" this will be the lower left corner of the A character.
  - `void u8g2_for_adafruit_gfx.print(...)`: This is the standard Arduino print function. Any text given here will be output on the display via Adafruit GFX library. 
