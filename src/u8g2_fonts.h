@@ -58,6 +58,13 @@
 #  define U8X8_PROGMEM PROGMEM
 #endif
 
+#if defined(__GNUC__) && defined(ESP8266)
+#  include "c_types.h"
+#  define U8X8_FONT_SECTION(name) ICACHE_FLASH_ATTR
+#  define u8x8_pgm_read(adr) pgm_read_byte_near(adr)
+#  define U8X8_PROGMEM PROGMEM
+#endif
+
 #ifndef U8X8_FONT_SECTION
 #  define U8X8_FONT_SECTION(name) 
 #endif
