@@ -63,7 +63,7 @@ static uint16_t u8g2_font_get_word(const uint8_t *font, uint8_t offset)
 
 /*========================================================================*/
 /* new font format */
-void u8g2_read_font_info(u8g2_font_info_t *font_info, const uint8_t *font)
+void u8g2_read_font_info(struct _u8g2_agfx_font_info_t *font_info, const uint8_t *font)
 {
   /* offset 0 */
   font_info->glyph_cnt = u8g2_font_get_byte(font, 0);
@@ -123,8 +123,8 @@ uint8_t u8g2_GetFontCapitalAHeight(u8g2_font_t *u8g2)
   return u8g2->font_info.ascent_A;    /* new font info structure */
 }
 
-static uint8_t u8g2_font_decode_get_unsigned_bits(u8g2_font_decode_t *f, uint8_t cnt) U8X8_NOINLINE;
-static uint8_t u8g2_font_decode_get_unsigned_bits(u8g2_font_decode_t *f, uint8_t cnt) 
+static uint8_t u8g2_font_decode_get_unsigned_bits(struct _u8g2_agfx_font_decode_t *f, uint8_t cnt) U8X8_NOINLINE;
+static uint8_t u8g2_font_decode_get_unsigned_bits(struct _u8g2_agfx_font_decode_t *f, uint8_t cnt)
 {
   uint8_t val;
   uint8_t bit_pos = f->decode_bit_pos;
@@ -169,8 +169,8 @@ static uint8_t u8g2_font_decode_get_unsigned_bits(u8g2_font_decode_t *f, uint8_t
 
 */
 /* optimized */
-static int8_t u8g2_font_decode_get_signed_bits(u8g2_font_decode_t *f, uint8_t cnt) U8X8_NOINLINE;
-static int8_t u8g2_font_decode_get_signed_bits(u8g2_font_decode_t *f, uint8_t cnt)
+static int8_t u8g2_font_decode_get_signed_bits(struct _u8g2_agfx_font_decode_t *f, uint8_t cnt) U8X8_NOINLINE;
+static int8_t u8g2_font_decode_get_signed_bits(struct _u8g2_agfx_font_decode_t *f, uint8_t cnt)
 {
   int8_t v, d;
   v = (int8_t)u8g2_font_decode_get_unsigned_bits(f, cnt);
@@ -279,7 +279,7 @@ static void u8g2_font_decode_len(u8g2_font_t *u8g2, uint8_t len, uint8_t is_fore
   /* target position on the screen */
   int16_t x, y;
   
-  u8g2_font_decode_t *decode = &(u8g2->font_decode);
+  struct _u8g2_agfx_font_decode_t *decode = &(u8g2->font_decode);
   
   cnt = len;
   
@@ -340,7 +340,7 @@ static void u8g2_font_decode_len(u8g2_font_t *u8g2, uint8_t len, uint8_t is_fore
 
 static void u8g2_font_setup_decode(u8g2_font_t *u8g2, const uint8_t *glyph_data)
 {
-  u8g2_font_decode_t *decode = &(u8g2->font_decode);
+  struct _u8g2_agfx_font_decode_t *decode = &(u8g2->font_decode);
   decode->decode_ptr = glyph_data;
   decode->decode_bit_pos = 0;
   
@@ -376,7 +376,7 @@ static int8_t u8g2_font_decode_glyph(u8g2_font_t *u8g2, const uint8_t *glyph_dat
   int8_t x, y;
   int8_t d;
   int8_t h;
-  u8g2_font_decode_t *decode = &(u8g2->font_decode);
+  struct _u8g2_agfx_font_decode_t *decode = &(u8g2->font_decode);
     
   u8g2_font_setup_decode(u8g2, glyph_data);
   h = u8g2->font_decode.glyph_height;
