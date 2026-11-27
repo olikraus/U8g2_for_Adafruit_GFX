@@ -109,7 +109,7 @@ void loop() {
  
 ## Release Procedure
   - Copy font file u8g2_fonts.c from the U8g2 project to "src/u8g2_fonts_data.inc"
-  - Change the include file in u8g2_fonts_data.inc from "u8g2.h" to "u8g2_fonts.h"
+  - Remove the `#include "u8g2.h"` line from `src/u8g2_fonts_data.inc`
   - Update the list of fonts in "U8g2_for_Adafruit_GFX.h"
   - Update keywords.txt
   - Update version in library.properties 
