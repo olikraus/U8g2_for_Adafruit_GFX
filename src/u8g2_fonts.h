@@ -43,19 +43,37 @@
 #include <stdint.h>
 
 #ifdef __GNUC__
-#  define U8X8_NOINLINE __attribute__((noinline))
-#  define U8X8_SECTION(name) __attribute__ ((section (name)))
-#  define U8X8_UNUSED __attribute__((unused))
+#  ifndef U8X8_NOINLINE
+#    define U8X8_NOINLINE __attribute__((noinline))
+#  endif
+#  ifndef U8X8_SECTION
+#    define U8X8_SECTION(name) __attribute__ ((section (name)))
+#  endif
+#  ifndef U8X8_UNUSED
+#    define U8X8_UNUSED __attribute__((unused))
+#  endif
 #else
-#  define U8X8_SECTION(name)
-#  define U8X8_NOINLINE
-#  define U8X8_UNUSED
+#  ifndef U8X8_SECTION
+#    define U8X8_SECTION(name)
+#  endif
+#  ifndef U8X8_NOINLINE
+#    define U8X8_NOINLINE
+#  endif
+#  ifndef U8X8_UNUSED
+#    define U8X8_UNUSED
+#  endif
 #endif
 
 #if defined(__GNUC__) && defined(__AVR__)
-#  define U8X8_FONT_SECTION(name) U8X8_SECTION(".progmem." name)
-#  define u8x8_pgm_read(adr) pgm_read_byte_near(adr)
-#  define U8X8_PROGMEM PROGMEM
+#  ifndef U8X8_FONT_SECTION
+#    define U8X8_FONT_SECTION(name) U8X8_SECTION(".progmem." name)
+#  endif
+#  ifndef u8x8_pgm_read
+#    define u8x8_pgm_read(adr) pgm_read_byte_near(adr)
+#  endif
+#  ifndef U8X8_PROGMEM
+#    define U8X8_PROGMEM PROGMEM
+#  endif
 #endif
 
 #ifndef U8X8_FONT_SECTION
@@ -70,7 +88,9 @@
 #  define U8X8_PROGMEM
 #endif
 
-#define U8G2_FONT_SECTION(name) U8X8_FONT_SECTION(name) 
+#ifndef U8G2_FONT_SECTION
+#  define U8G2_FONT_SECTION(name) U8X8_FONT_SECTION(name)
+#endif
 
 /* the macro U8G2_USE_LARGE_FONTS enables large fonts (>32K) */
 /* it can be enabled for those uC supporting larger arrays */

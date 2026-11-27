@@ -108,8 +108,8 @@ void loop() {
   - This library does not support the change of the reference position. The reference position is the lower left baseline of a character.
  
 ## Release Procedure
-  - Copy font file u8g2_fonts.c to "src" folder
-  - Change the include file in u8g2_fonts.c from "u8g2.h" to "u8g2_fonts.h"
+  - Copy font file u8g2_fonts.c from the U8g2 project to "src/u8g2_fonts_data.inc"
+  - Remove the `#include "u8g2.h"` line from `src/u8g2_fonts_data.inc`
   - Update the list of fonts in "U8g2_for_Adafruit_GFX.h"
   - Update keywords.txt
   - Update version in library.properties 

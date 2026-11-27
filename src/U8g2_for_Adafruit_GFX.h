@@ -39,14 +39,22 @@
 #define U8g2_for_Adafruit_GFX_h
 
 #include <Adafruit_GFX.h>
-#include "u8g2_fonts.h"
 
+#if !defined(U8G2_H) && defined(__has_include)
+#  if __has_include(<u8g2.h>)
+#    include <u8g2.h>               /* plain C / ESP-IDF */
+#  elif __has_include(<clib/u8g2.h>)
+#    include <clib/u8g2.h>          /* Arduino U8g2 library */
+#  endif
+#endif
+
+#include "u8g2_fonts.h"
 
 //========================================================
 
 
 
-struct _u8g2_font_info_t
+struct _u8g2_agfx_font_info_t
 {
   /* offset 0 */
   uint8_t glyph_cnt;
@@ -80,9 +88,8 @@ struct _u8g2_font_info_t
   /* offset 21 */
   uint16_t start_pos_unicode;
 };
-typedef struct _u8g2_font_info_t u8g2_font_info_t;
 
-struct _u8g2_font_decode_t
+struct _u8g2_agfx_font_decode_t
 {
   const uint8_t *decode_ptr;      /* pointer to the compressed data */
   
@@ -100,7 +107,11 @@ struct _u8g2_font_decode_t
   uint8_t is_transparent;
   uint8_t dir;        /* direction */
 };
-typedef struct _u8g2_font_decode_t u8g2_font_decode_t;
+
+#ifndef U8G2_H
+typedef struct _u8g2_agfx_font_info_t u8g2_font_info_t;
+typedef struct _u8g2_agfx_font_decode_t u8g2_font_decode_t;
+#endif /* U8G2_H */
 
 
 struct _u8g2_font_t
@@ -111,8 +122,8 @@ struct _u8g2_font_t
   const uint8_t *font;             /* current font for all text procedures */
   
   //u8g2_font_calc_vref_fnptr font_calc_vref;
-  u8g2_font_decode_t font_decode;   /* new font decode structure */
-  u8g2_font_info_t font_info;     /* new font info structure */
+  struct _u8g2_agfx_font_decode_t font_decode;   /* new font decode structure */
+  struct _u8g2_agfx_font_info_t font_info;     /* new font info structure */
 
   //uint8_t font_height_mode;
   //int8_t font_ref_ascent;
@@ -222,6 +233,8 @@ class U8G2_FOR_ADAFRUIT_GFX : public Print {
 
 
 /*==========================================*/
+
+#ifndef U8G2_H
 
 /* start font list */
 extern const uint8_t u8g2_font_u8glib_4_tf[] U8G2_FONT_SECTION("u8g2_font_u8glib_4_tf");
@@ -1915,6 +1928,8 @@ extern const uint8_t u8g2_font_px437wyse700b_mr[] U8G2_FONT_SECTION("u8g2_font_p
 extern const uint8_t u8g2_font_px437wyse700b_mn[] U8G2_FONT_SECTION("u8g2_font_px437wyse700b_mn");
 
 /* end font list */
+
+#endif /* U8G2_H */
 
 
 #endif /* U8g2_for_Adafruit_GFX_h */
